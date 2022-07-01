@@ -8,7 +8,7 @@ void main() {
 
   if (temperatura <= 18) {
     print('Friaca!!, Colocando o casaco');
-  } else if (temperatura < 35) {
+  } else  {
     print('calor');
   }
 }
