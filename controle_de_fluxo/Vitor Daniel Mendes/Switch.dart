@@ -6,14 +6,19 @@ void main() {
   //   contador++;
   // }
   int numeleitores = 10;
-  int contador = 1;
+  int contador = 0;
   int? qtdvotos = 0; //17            13          45
-  Map<String, int> Candidatos = {"Bolsonaro": 0, "Dilmãe": 0, "Temer": 0};
+  Map<String, int> Candidatos = {"Bolsonaro": 0, "Dilma": 0, "Temer": 0};
 
-  while (contador <= numeleitores) {
+  while (contador < numeleitores) {
     int voto;
-    print('Votação [17 - Bolsonaro | 13 - Dilmãe | Temer = 45]');
+    print('Votação [17 - Bolsonaro | 13 - Dilma | Temer = 45 | 0 - Sair]');
     voto = int.parse(stdin.readLineSync()!);
+
+    //encerrar votação
+    if (voto == 0) {
+      break;
+    }
 
     switch (voto) {
       case 17:
@@ -21,6 +26,7 @@ void main() {
           qtdvotos = Candidatos["Bolsonaro"];
           qtdvotos = qtdvotos! + 1;
           Candidatos["Bolsonaro"] = qtdvotos;
+          contador++;
           break;
         }
       case 13:
@@ -28,6 +34,7 @@ void main() {
           qtdvotos = Candidatos["Dilmãe"];
           qtdvotos = qtdvotos! + 1;
           Candidatos["Dilmãe"] = qtdvotos;
+          contador++;
           break;
         }
       case 45:
@@ -35,12 +42,16 @@ void main() {
           qtdvotos = Candidatos["Temer"];
           qtdvotos = qtdvotos! + 1;
           Candidatos["Temer"] = qtdvotos;
+          contador++;
           break;
         }
 
       default:
+        {
+          print('Voto inválido');
+          break;
+        }
     }
-    contador++;
   }
   print('votação finalizada');
   print('Resultado dos votos: $Candidatos');
